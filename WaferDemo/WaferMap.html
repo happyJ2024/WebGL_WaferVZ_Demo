@@ -1,0 +1,166 @@
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset=utf-8"/>
+    <title>Wafer Map</title>
+    <link rel="stylesheet" href="./Styles/WaferMap.css"/>
+    <script type="text/javascript" src="Scripts/lib/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="Scripts/lib/jquery.metadata.js"></script>
+    <script type="text/javascript" src="Scripts/lib/three.js"></script>
+    <script type="text/javascript" src="Scripts/WebGLBase/WebGLFramework.js"></script>
+    <script type="text/javascript" src="Scripts/WebGLBase/OrbitControls.js"></script>
+    <script type="text/javascript" src="Scripts/WebGLBase/TrackballControls.js"></script>
+
+    <script type="text/javascript" src="Scripts/Colors.js"></script>
+    <script type="text/javascript" src="Scripts/WaferMapApp.js"></script>
+    <script type="text/javascript" src="Scripts/Die.js"></script>
+    <script type="text/javascript" src="Scripts/CubeDieBase.js"></script>
+    <script type="text/javascript" src="Scripts/Cube.js"></script>
+    <script type="text/javascript" src="Scripts/Main.js"></script>
+    <script type="text/javascript" src="Scripts/DrawGrid.js"></script>
+    <script type="text/javascript" src="Scripts/DrawCube.js"></script>
+    <script type="text/javascript">
+
+        var waferMapData;
+        var application;
+        var container;
+        var light;
+        var targetPosition;
+
+        var VIEW = "VIEW";
+        var MARK_ERROR = "MARK_ERROR";
+        var PICK_UP = "PICK_UP";
+        var OPERATION_FLAG = VIEW;
+
+        var PLAY_ANIMATION_STATE = "STOP";
+        var PLAY_ANIMATION_STOP = "STOP";
+        var PLAY_ANIMATION_RUN = "RUN";
+
+        $().ready(function () {
+            console.log("ready");
+            // dom ready
+            waferMapData = getJsonData();
+
+            container = document.getElementById("monitor");
+            application = new WaferMapApp();
+            application.init({container: container});
+            ViewMatrix(waferMapData);
+
+        });
+
+    </script>
+</head>
+<body>
+<div id="page" class="page">
+    <!-- <div class="header">
+         Wafer Map Demo
+     </div>-->
+    <div class="main">
+        <div id="monitor" class="monitor">
+
+            <div class="menuCt">
+                <div id="view_mode_menu" class="menu">
+                    <ul>
+                        <li>
+                            <div class="panel" onselectstart="return false">
+                                View Mode
+                            </div>
+                            <ul>
+                                <li>
+                                    <div id="nav_button_view" class="nav-button_li" onclick="changeOprFlag(this.id)">
+                                        <input id="radio_view" name="opr_flag" type="radio" checked="checked"/>View&nbsp&nbsp&nbspOnly
+                                    </div>
+                                </li>
+                                <li>
+                                    <div id="nav_button_mark_error" class="nav-button_li"
+                                         onclick="changeOprFlag(this.id)">
+                                        <input id="radio_mark_error" name="opr_flag" type="radio"/>Mark Defect
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div id="animation_menu" class="menu">
+                    <ul style="width: 150px">
+                        <li>
+                            <div id="playAnimation_div" class="panel"
+                                 onclick="playAnimation(this.id)">
+                                Bonding Simulation
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--
+            <div class="menu">
+                <div id="nav_button_view" class="nav-button" onclick="changeOprFlag(this.id)">
+                    <div>
+                        <input id="radio_view" name="opr_flag" type="radio" checked="checked"/>Just View
+                    </div>
+                </div>
+                <div id="nav_button_mark_error" class="nav-button" onclick="changeOprFlag(this.id)">
+                    <div>
+                        <input id="radio_mark_error" name="opr_flag" type="radio"/>Mark Error
+                    </div>
+                </div>
+
+                <div id="nav_button_pickup" class="nav-button" style="margin-left: 5px;width: 250px"
+                     onclick="playAnimation(this.id)">
+                    Play Bonding Animation
+                </div>
+            </div>-->
+            <!-- legend -->
+            <div id="legend_top" class="legend" style="top:8px;bottom: auto">
+                <ul>
+                    <li class="bottom" style="margin-left: 5px">
+                        <div>
+                            Total&nbsp&nbsp&nbsp: <a id="total_a">130</a>
+                        </div>
+                        <div>
+                            Defect&nbsp: <a id="mark_error_a">0</a>
+                        </div>
+                        <div>
+                            Bonded: <a id="pick_up_a">0</a>
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div id="legend_bottom" class="legend" >
+                <ul style="margin-top: 5px;margin-bottom: 5px">
+                    <li class="bottom" >
+                        <div>
+                            <div class="left">
+                                <img src="Images/legend_default.png" alt="default color" width="30px"
+                                     height="30px"/>
+                            </div>
+                            <div class="right">
+                                Good
+                            </div>
+                        </div>
+                    </li>
+                    <li class="bottom">
+                        <div>
+                            <div class="left">
+                                <img src="Images/legend_mark_error.png" alt="Error color" width="30px" height="30px"/>
+                            </div>
+                            <div class="right">
+                                Defect
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="clear">
+    </div>
+    <div class="footer">
+        &copy;2014 Kulicke & Soffa, Inc.
+    </div>
+
+</body>
+</html>

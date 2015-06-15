@@ -1,0 +1,144 @@
+﻿.main {
+    margin: 4px 4px 4px 4px;
+    min-height: 550px;
+}
+
+.header {
+    position: relative;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.footer {
+    color: #4e5766;
+    padding-top: 8px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: normal;
+}
+
+.clear {
+    clear: both;
+}
+
+#monitor {
+    background: white;
+    height: 750px;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* LEGEND
+----------------------------------------------------------*/
+.legend {
+    height: auto;
+    width: 150px;
+    bottom: 8px;
+    right: 8px;
+    background-color: rgba(200, 200, 200, 0.3);
+    position: absolute;
+    color: #CCCCCC;
+    display: block;
+}
+
+.legend ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+.legend ul li {
+    line-height: 30px;
+}
+
+.bottom {
+    border-bottom: 0 solid #b6b7bc;
+}
+
+.legend .left {
+    float: left;
+    height: 30px;
+    width: 50px;
+    position: relative;
+    margin-left: 4px;
+}
+
+.legend .right {
+    width: 180px;
+    margin-left: 50px;
+    padding-left: 8px;
+    border-left: 0 solid #b6b7bc;
+}
+
+/*-------------------*/
+
+.menuCt {
+    width: 100%;
+    height: 0;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.menu {
+    margin-top: 8px;
+    position: relative;
+    margin-right: 8px;
+    width: 120px;
+    float: left;
+    height: auto;
+    color: #eee;
+    font-weight: normal;
+    font-size: 1.0em;
+}
+
+.menu ul li:hover ul {
+    display: block;
+
+}
+
+.menu ul li ul {
+    display: none;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background-color: rgba(200, 200, 200, 0.3);
+    color: #eee;
+    width: 120px;
+}
+
+.menu ul li {
+    line-height: 30px;
+    background-color: rgba(200, 200, 200, 0.3);
+}
+
+.menu ul li ul li:hover {
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+.menu ul li div:hover {
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+.nav-button_li {
+    width: 120px;
+    color: #eee;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: normal;
+    font-size: 1.0em;
+    margin-right: 0px;
+}
+
+.panel {
+    text-align: center;
+}
